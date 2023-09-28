@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block main %}
+
+<h1>All Current Teams</h1>
+
+<div>
+    <table class="table">
+        <th>Team Name</th>
+            {% for team in teams %}
+            <tr>
+                <td>{{ team.team_name }}</td>
+                <td class="delete-section">
+                    <form method="POST" action="{{ url_for('delete_team', team_id=team.id) }}">
+                        <button type="submit" class="delete-button">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+</div>
+<div>
+    <h3>Would You Like To Add A Team?</h3>
+    <a href="{{ url_for('add_new_team')}}">Add Team</a>
+</div>
+{% endblock %}

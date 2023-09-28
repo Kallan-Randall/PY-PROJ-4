@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block main %}
+
+<h1>Add New Team</h1>
+<div>   
+    <form action="{{ url_for('add_team') }}" method="POST">
+        {{ team_form.csrf_token()}}
+        {{ team_form.team_name.label }}
+        {{ team_form.team_name }}
+        {{ team_form.submit }}
+    </form>
+</div>
+
+{% endblock %}

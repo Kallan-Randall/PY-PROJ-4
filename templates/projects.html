@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block main %}
+
+    <h1>Projects Page</h1>
+
+    <div>
+        <table class="table">
+            
+            <th>Project Name</th>
+            <th>Description</th>
+            <th>Completed</th>
+            <th>Team</th>
+        {% for project in projects %}
+        <tr>
+            <td>{{ project.project_name }}</td>
+            <td>{{ project.description }}</td>
+            <td>{{ project.completed }}</td>
+            <td>{{ project.team.team_name }}</td>
+            <td>
+                <form method="POST" action="{{ url_for('delete_project', project_id=project.id) }}">
+                    <button type="submit" class="delete-button">Delete</button>
+                </form>
+            </td>
+        </tr>
+
+        {% endfor %}
+    </div>
+    
+    <div class="bottom-element">
+        <h3>Would You Like To Add A New Project?</h3>
+        <a href="{{ url_for('add_new_project')}}">Add Project</a>
+        
+    </div>
+  
+
+
+
+
+
+{% endblock %}
